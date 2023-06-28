@@ -1,0 +1,5 @@
+export enum StatusActionMonthlyEnum {
+  NAO_REALIZADO = 'NAO_REALIZADO',
+  EM_ANDAMENTO = 'EM_ANDAMENTO',
+  CONCLUIDO = 'CONCLUIDO',
+}

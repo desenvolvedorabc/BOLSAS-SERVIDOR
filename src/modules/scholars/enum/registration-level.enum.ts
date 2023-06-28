@@ -1,0 +1,4 @@
+export enum RegistrationLevel {
+  PRE_CADASTRO = 'PRE_CADASTRO',
+  CADASTRO_COMPLETO = 'CADASTRO_COMPLETO',
+}

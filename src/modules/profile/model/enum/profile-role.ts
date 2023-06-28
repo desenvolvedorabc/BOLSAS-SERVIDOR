@@ -1,0 +1,7 @@
+export enum ProfileRole {
+  BOLSISTA = 'BOLSISTA',
+  ESTADO = 'ESTADO',
+  MUNICIPIO = 'MUNICIPIO',
+  PARC = 'PARC',
+  REGIONAL = 'REGIONAL',
+}

@@ -1,0 +1,15 @@
+export const entitiesMock = {
+  access_profile: 'Perfil de Acesso',
+  access_profile_areas_areas: 'Áreas Perfil de Acesso',
+  users: 'Usuários',
+  bank_remittances: 'Remessas Bancárias',
+  messages: 'Mensagens',
+  month_report: 'Relatório Mensal',
+  notifications: 'Notificações',
+  partner_states: 'Estados Parceiros',
+  regional_partners: 'Regionais Parceiras',
+  scholars: 'Bolsistas',
+  system_parameters: 'Parâmetros do Sistema',
+  terms_of_membership: 'Termos de Adesão',
+  work_plans: 'Planos de Trabalho',
+};
