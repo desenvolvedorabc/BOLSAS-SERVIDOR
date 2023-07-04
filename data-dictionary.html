@@ -1,0 +1,543 @@
+<html><head>
+<title>Schema Report for database: ParcBolsasStag</title>
+<style>
+        td,th {
+        text-align:left;
+        vertical-align:middle;
+        }
+        table {
+        border-collapse: collapse;
+        border: 1px solid;
+        }
+        caption, th, td {
+        padding: .2em .8em;
+        border: 1px solid #000000;
+        }
+        caption {
+        background: #D3D3D3;
+        font-weight: bold;
+        font-size: 1.1em;
+        }
+        th {
+        font-weight: bold;
+        background: #000000;
+        color: white;
+        }
+        td {
+        background: #FFFFFF;
+        }
+        </style>
+      </head>
+     <body>
+<h1>Schema Report for database: ParcBolsasStag</h1>
+<a id="home">Table List </a><br /><ul>
+<li><a href="#access_profile">access_profile </a></li>
+<li><a href="#access_profile_areas_areas">access_profile_areas_areas </a></li>
+<li><a href="#action_monthly_report">action_monthly_report </a></li>
+<li><a href="#areas">areas </a></li>
+<li><a href="#bank_remittances">bank_remittances </a></li>
+<li><a href="#forget_password">forget_password </a></li>
+<li><a href="#messages">messages </a></li>
+<li><a href="#messages_users_users">messages_users_users </a></li>
+<li><a href="#migrations">migrations </a></li>
+<li><a href="#month_report">month_report </a></li>
+<li><a href="#notifications">notifications </a></li>
+<li><a href="#partner_states">partner_states </a></li>
+<li><a href="#regional_partners">regional_partners </a></li>
+<li><a href="#schedule_work_plan">schedule_work_plan </a></li>
+<li><a href="#scholars">scholars </a></li>
+<li><a href="#system_logs">system_logs </a></li>
+<li><a href="#system_parameters">system_parameters </a></li>
+<li><a href="#terms_of_membership">terms_of_membership </a></li>
+<li><a href="#users">users </a></li>
+<li><a href="#validations_history">validations_history </a></li>
+<li><a href="#work_plans">work_plans </a></li>
+</ul>
+<a id="access_profile"></a><table style="width:100%"><caption>Table: access_profile </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>active</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'1'</td><td></td></tr>
+<tr><td>createdByUserId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>role</td><td>ENUM('BOLSISTA', 'ESTADO', 'MUNICIPIO', 'PARC', 'REGIONAL')</td><td>Yes</td><td>No</td><td>No</td><td>'PARC'</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="access_profile_areas_areas"></a><table style="width:100%"><caption>Table: access_profile_areas_areas </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>accessProfileId</td><td>INT</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+<tr><td>areasId</td><td>INT</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="action_monthly_report"></a><table style="width:100%"><caption>Table: action_monthly_report </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>detailing</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar o detalhamento da ação reliazada.</td></tr>
+<tr><td>detailingResult</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar o resultado da ação realizada.</td></tr>
+<tr><td>trainingDate</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar a data da formação.</td></tr>
+<tr><td>workloadInMinutes</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar a carga horária.</td></tr>
+<tr><td>qntExpectedGraduates</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar a quantidade de formados previstos.</td></tr>
+<tr><td>qntFormedGifts</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar a quantidade de formados presentes.</td></tr>
+<tr><td>trainingModality</td><td>ENUM('REMOTO', 'PRESENCIAL')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td>Coluna destinada a informar a modalidade da formação.</td></tr>
+<tr><td>scheduleWorkPlanId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+<tr><td>status</td><td>ENUM('NAO_REALIZADO', 'EM_ANDAMENTO', 'CONCLUIDO')</td><td>Yes</td><td>No</td><td>No</td><td>'EM_ANDAMENTO'</td><td></td></tr>
+<tr><td>monthlyReportId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="areas"></a><table style="width:100%"><caption>Table: areas </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>tag</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>role</td><td>ENUM('PARC', 'ESTADO')</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="bank_remittances"></a><table style="width:100%"><caption>Table: bank_remittances </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>bank</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>agency</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>accountType</td><td>ENUM('POUPANCA', 'CORRENTE')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>scholarshipValueInCents</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>accountNumber</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>termOfMembershipId</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>monthlyReportId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="forget_password"></a><table style="width:100%"><caption>Table: forget_password </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>VARCHAR(36)</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>token</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>isValid</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>TIMESTAMP(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>TIMESTAMP(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>userId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="messages"></a><table style="width:100%"><caption>Table: messages </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>title</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td>Campo destinado a informar o título da mensagem</td></tr>
+<tr><td>text</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td>Campo destinado a informar o corpo da mensagem</td></tr>
+<tr><td>deletedAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>createdByUserId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="messages_users_users"></a><table style="width:100%"><caption>Table: messages_users_users </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>messagesId</td><td>INT</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+<tr><td>usersId</td><td>INT</td><td>Yes</td><td>Yes</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="migrations"></a><table style="width:100%"><caption>Table: migrations </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>timestamp</td><td>BIGINT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="month_report"></a><table style="width:100%"><caption>Table: month_report </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>month</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>year</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>status</td><td>ENUM('APROVADO', 'EM_VALIDACAO', 'PENDENTE_VALIDACAO', 'PENDENTE_ENVIO', 'REPROVADO')</td><td>Yes</td><td>No</td><td>No</td><td>'PENDENTE_ENVIO'</td><td></td></tr>
+<tr><td>actionDocument</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>levelApproveRegistration</td><td>ENUM('MUNICIPIO', 'REGIONAL', 'ESTADO')</td><td>No</td><td>No</td><td>No</td><td>'MUNICIPIO'</td><td></td></tr>
+<tr><td>validationAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>validationHistoryCountyId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>validationHistoryRegionalId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>validationHistoryStateId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>scholarId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="notifications"></a><table style="width:100%"><caption>Table: notifications </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>title</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td>Campo destinado a informar o título da notificação</td></tr>
+<tr><td>text</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td>Campo destinado a informar o corpo da notificação</td></tr>
+<tr><td>readAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>messageId</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>userId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="partner_states"></a><table style="width:100%"><caption>Table: partner_states </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>cod_ibge</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>abbreviation</td><td>VARCHAR(2)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>logo</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>active</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'1'</td><td></td></tr>
+<tr><td>slug</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>color</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="regional_partners"></a><table style="width:100%"><caption>Table: regional_partners </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>abbreviation</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>active</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'1'</td><td></td></tr>
+<tr><td>cities</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>partnerStateId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="schedule_work_plan"></a><table style="width:100%"><caption>Table: schedule_work_plan </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>month</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>year</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>action</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td>Coluna destinada a informar o tipo de ação dentro de um cronograma</td></tr>
+<tr><td>workPlanId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>status</td><td>ENUM('NAO_REALIZADO', 'EM_ANDAMENTO', 'CONCLUIDO')</td><td>Yes</td><td>No</td><td>No</td><td>'EM_ANDAMENTO'</td><td></td></tr>
+<tr><td>isFormer</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'0'</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="scholars"></a><table style="width:100%"><caption>Table: scholars </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>axle</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>isFormer</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'0'</td><td></td></tr>
+<tr><td>rg</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>sex</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>maritalStatus</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>dateOfBirth</td><td>DATE</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>motherName</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>fatherName</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>cep</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>state</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>city</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>address</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>bank</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>agency</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>accountNumber</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>trainingArea</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>highestDegree</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>employmentRelationship</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>instituteOfOrigin</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>functionalStatus</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>locationDevelopWorkPlan</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>bagDescription</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>agreementOfTheEducationNetwork</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>curriculumVitae</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>copyHigherTitle</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>copyRgFrontAndVerse</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>copyCpfFrontAndVerse</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>currentAccountCopy</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>proofOfAddress</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>medicalCertificate</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>registrationLevel</td><td>ENUM('PRE_CADASTRO', 'CADASTRO_COMPLETO')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>levelApproveRegistration</td><td>ENUM('MUNICIPIO', 'REGIONAL')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>statusRegistration</td><td>ENUM('APROVADO', 'EM_VALIDACAO', 'PENDENTE_ENVIO', 'PENDENTE_VALIDACAO', 'REPROVADO')</td><td>No</td><td>No</td><td>No</td><td>'PENDENTE_ENVIO'</td><td></td></tr>
+<tr><td>validationHistoryCountyId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>validationHistoryRegionalId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>userId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+<tr><td>accountType</td><td>ENUM('POUPANCA', 'CORRENTE')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="system_logs"></a><table style="width:100%"><caption>Table: system_logs </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>method</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>nameEntity</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>stateInitial</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>stateFinal</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>userId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="system_parameters"></a><table style="width:100%"><caption>Table: system_parameters </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>dayLimitForMonthlyReport</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>daysLimitForAnalysisMonthlyReport</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>daysLimitSendNotificationForMonthlyReport</td><td>INT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>partnerStateId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="terms_of_membership"></a><table style="width:100%"><caption>Table: terms_of_membership </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>project</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>workUnit</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>city</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>contractDescription</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>axle</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>payingSource</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>weekHours</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>scholarshipValueInCents</td><td>INT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>bagName</td><td>TEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>startDate</td><td>DATETIME</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>endDate</td><td>DATETIME</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>extensionDate</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>signedAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>signedDocument</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>cancelAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>cancelDocument</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>status</td><td>ENUM('ASSINADO', 'CANCELADO', 'INATIVADO', 'PENDENTE_ASSINATURA')</td><td>Yes</td><td>No</td><td>No</td><td>'PENDENTE_ASSINATURA'</td><td></td></tr>
+<tr><td>scholarId</td><td>INT</td><td>Yes</td><td>No</td><td>Yes</td><td></td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="users"></a><table style="width:100%"><caption>Table: users </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>name</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>email</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>telephone</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>role</td><td>ENUM('PARC', 'ESTADO')</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>image_profile</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>password</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>cpf</td><td>VARCHAR(11)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>active</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'1'</td><td></td></tr>
+<tr><td>isChangePasswordWelcome</td><td>TINYINT</td><td>Yes</td><td>No</td><td>No</td><td>'0'</td><td></td></tr>
+<tr><td>accessProfileId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>partnerStateId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+<tr><td>subRole</td><td>ENUM('ADMIN', 'BOLSISTA', 'USER')</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>city</td><td>VARCHAR(255)</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>regionalPartnerId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="validations_history"></a><table style="width:100%"><caption>Table: validations_history </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>status</td><td>VARCHAR(255)</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>justificationReprove</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>userId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+<a id="work_plans"></a><table style="width:100%"><caption>Table: work_plans </caption>
+<tr><td>Table Comments</td><td colspan="6"></td></tr>
+<tr><td colspan="7">Columns</td></tr>
+        <tr>
+        <th>Name</th>
+        <th>Data Type</th>
+        <th>Nullable</th>
+        <th>PK</th>
+        <th>FK</th>
+        <th>Default</th>
+        <th>Comment</th>
+        </tr>
+<tr><td>id</td><td>INT</td><td>Yes</td><td>Yes</td><td>No</td><td></td><td></td></tr>
+<tr><td>createdAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>updatedAt</td><td>DATETIME(6)</td><td>Yes</td><td>No</td><td>No</td><td>CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)</td><td></td></tr>
+<tr><td>status</td><td>ENUM('APROVADO', 'EM_VALIDACAO', 'PENDENTE_VALIDACAO', 'PENDENTE_ENVIO', 'REPROVADO')</td><td>Yes</td><td>No</td><td>No</td><td>'PENDENTE_ENVIO'</td><td></td></tr>
+<tr><td>justificationReprove</td><td>LONGTEXT</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>justification</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>generalObjectives</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>specificObjectives</td><td>LONGTEXT</td><td>Yes</td><td>No</td><td>No</td><td></td><td></td></tr>
+<tr><td>sendValidationAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>validationAt</td><td>DATETIME</td><td>No</td><td>No</td><td>No</td><td>NULL</td><td></td></tr>
+<tr><td>scholarId</td><td>INT</td><td>No</td><td>No</td><td>Yes</td><td>NULL</td><td></td></tr>
+</table><a href="#home">Table List </a></br>
+</body></html>
