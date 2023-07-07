@@ -1,5 +1,13 @@
 <h1 align="center">PARC</h1>
 
+## 📖 Descrição do Projeto
+
+O produto PARC tem por principal fundamento de funcionamento um sistema de gestão de bolsas, como importância no auxílio da gestão de bolsas oferecidas pelo estado e na parceira de colaboração no regime de colaboração entre estados e municípios. O software conta com módulos de criação de planos de trabalho e criação de relatórios mensais que irão compor a jornada do bolsista. A plataforma conta também com funcionalidades que acompanham os órgãos que apoiam as operações nos estados, e auxilia no processo de emissão de remessas de pagamento. O projeto conta com a entrega de 2 produtos (SITE ADM PARC / SITE DO ESTADO), sendo o SITE DO ESTADO a principal entrega do produto.
+
+## 📱 Funcionalidade
+
+Responsavel pelo armazenamento e manipulação dos dados do projeto alem de disponibilizar a API para ser utilizada pelo site, permitindo buscar, criar e alterar os dados e se comunicar com o banco de dados, assim como realiza ações automáticas de processamento dos dados.
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:  
