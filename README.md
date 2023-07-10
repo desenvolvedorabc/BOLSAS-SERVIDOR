@@ -82,6 +82,20 @@ Para ter acesso ao Dicionário de Dados basta acessar o **data-dictionary.html**
 
 ![PARC-DER](https://github.com/desenvolvedorabc/BOLSAS-SERVIDOR/blob/main/parc-der.png)
 
+### 🌐 Tecnologias de sustentação/hospedagem:
+O projeto opera em sua totalidade, em cloud, especificamente na GCP (Google Cloud Platform), a qual mantém os serviços, imagens Docker, e o executável da aplicação.
+Os principais serviços para atender as requisições provisionadas centro lógico de processamento e gravação de dados na Cloud são:
+ - CloudRun 
+ - CloudBuild
+ - CloudSQL
+ - Cloud Functions
+ - Região: south america - east 1 (São Paulo)
+
+Além do GCP, são provisionados também aplicações para o hosteamento e troca de informações entre usuários, conforme abaixo:
+ - Firebase Hosting
+ - Cloud Functions
+
+
 ### ⚙️ Configurações de máquina:
 Todos dados da PARC são armazenados em um banco MySQL 8.0.26, altamente disponível por região, com as seguintes configurações:
 
