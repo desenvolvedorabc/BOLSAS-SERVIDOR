@@ -81,3 +81,21 @@ Para ter acesso ao Dicionário de Dados basta acessar o **data-dictionary.html**
 ### ⛓ Diagrama Entidade Relacionamento (DER)
 
 ![PARC-DER](https://github.com/desenvolvedorabc/BOLSAS-SERVIDOR/blob/main/parc-der.png)
+
+### ⚙️ Configurações de máquina:
+Todos dados da PARC são armazenados em um banco MySQL 8.0.26, altamente disponível por região, com as seguintes configurações:
+
+#### API:
+
+ - vCPUs: 1
+ - Memória: 512 MiB
+ - Storage: Escalável
+ - Backups: 1x por dia (03h00 à 07h00)
+
+
+#### Banco De Dados: 
+
+- vCPUs: 1
+- Memória Ram: 3.75 GiB
+- Disco: SSD - 20GB (obs. sem auto scaling)
+- Região: southamerica-east1 (São Paulo)
