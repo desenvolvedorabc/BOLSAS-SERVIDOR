@@ -82,7 +82,7 @@ Para ter acesso ao Dicionário de Dados basta acessar o **data-dictionary.html**
 
 ![PARC-DER](https://github.com/desenvolvedorabc/BOLSAS-SERVIDOR/blob/main/parc-der.png)
 
-### 🌐 Tecnologias de sustentação/hospedagem:
+## 🌐 Tecnologias de sustentação/hospedagem:
 O projeto opera em sua totalidade, em cloud, especificamente na GCP (Google Cloud Platform), a qual mantém os serviços, imagens Docker, e o executável da aplicação.
 Os principais serviços para atender as requisições provisionadas centro lógico de processamento e gravação de dados na Cloud são:
  - CloudRun 
@@ -96,7 +96,7 @@ Além do GCP, são provisionados também aplicações para o hosteamento e troca
  - Cloud Functions
 
 
-### ⚙️ Configurações de máquina:
+## ⚙️ Configurações de máquina:
 Todos dados da PARC são armazenados em um banco MySQL 8.0.26, altamente disponível por região, com as seguintes configurações:
 
 #### API:
@@ -113,3 +113,36 @@ Todos dados da PARC são armazenados em um banco MySQL 8.0.26, altamente dispon�
 - Memória Ram: 3.75 GiB
 - Disco: SSD - 20GB (obs. sem auto scaling)
 - Região: southamerica-east1 (São Paulo)
+
+
+
+
+## 🗄️ Migrations
+
+### 🤔 O que são Migrations?
+
+Migrations são uma ferramenta poderosa para gerenciar alterações e atualizações em sua base de dados. Elas funcionam como um controle de versão do seu banco, permitindo a modificação da estrutura ao longo do tempo (como adicionar ou remover tabelas e campos). Em essência, ao rodar as migrations, estamos aplicando essas mudanças à nossa base de dados.
+
+### 🚀 Como executar as Migrations?
+
+Siga os passos abaixo para executar as migrations:
+
+1. **Instalação das dependências:** Certifique-se de ter instalado todas as dependências do projeto com o comando:
+
+```bash
+yarn install
+``` 
+
+2. **Configuração das variáveis de ambiente:** Duplique o arquivo `.env.example` (que se encontra na raiz do projeto), renomeie a cópia como `.env` e preencha-a com as informações pertinentes aos campos `DB_HOST`, `DB_USERNAME`, `DB_PASSWORD`, `DB_NAME`. Nota: os outros campos podem permanecer vazios se o objetivo for apenas rodar as migrations.
+
+3. **Visualização das Migrations:** Para conferir a conexão com o banco de dados e visualizar quais migrations foram ou não executadas, use o seguinte comando:
+
+```bash
+yarn typeorm:cli migration:show
+```
+
+4. **Execução das Migrations:** Finalmente, para aplicar todas as migrations pendentes, utilize o comando:
+
+```bash
+yarn typeorm:cli migration:run
+```
