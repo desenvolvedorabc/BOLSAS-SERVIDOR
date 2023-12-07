@@ -74,4 +74,29 @@ export class ParamsSystemIndicatorDto {
   @IsDate()
   @IsOptional()
   finalDate: Date;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsInt({ each: true })
+  @IsArray()
+  partnerStateIds: number[];
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsInt({ each: true })
+  @IsArray()
+  regionalPartnerIds: number[];
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsInt({ each: true })
+  @IsArray()
+  months: number[];
+
 }

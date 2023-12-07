@@ -40,6 +40,8 @@ async function bootstrap() {
     }),
   );
 
+  app.enableCors();
+
   const configService = app.get(ConfigService);
 
   const port = configService.get('PORT');

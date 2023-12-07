@@ -9,6 +9,8 @@ import { User } from '../user/model/entities/user.entity';
 import { RolesGuard } from '../auth/guard/roles.guard';
 import { Role } from '../auth/decorator/role.decorator';
 import { CredentialRole } from '../user/model/enum/role.enum';
+import { Post } from '@nestjs/common';
+import { Body } from '@nestjs/common';
 
 @Controller('system-indicators')
 @ApiTags('Indicadores do Sistema')
@@ -161,4 +163,32 @@ export class SystemIndicatorsController {
       user,
     );
   }
-}
+
+  @Role([CredentialRole.PARC])
+  @Post('/parc/trained-teachers')
+  getIndicatorTeacherTrainedMonth(
+    @Body() paramsSystemIndicator: ParamsSystemIndicatorDto,
+    @GetUser() user: User,
+  ) {
+    return this.systemIndicatorsStateService.trainedTeachersMonth(
+      paramsSystemIndicator,
+      user,
+    );
+  }
+
+  @Role([CredentialRole.ESTADO])
+  @Post('/state/trained-teachers-month')
+  getIndicatorStateTeacherTrainedMonth(
+    @Body() paramsSystemIndicator: ParamsSystemIndicatorDto,
+    @GetUser() user: User,
+  ) {
+    return this.systemIndicatorsStateService.stateTrainedTeachersMonth(
+      paramsSystemIndicator,
+      user,
+    );
+  }
+
+  }
+
+
+

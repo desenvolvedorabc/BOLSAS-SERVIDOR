@@ -1189,6 +1189,96 @@ export class SystemIndicatorsStateService {
     };
   }
 
+  async getTotalTrainedTeachersMonths({ year, partnerStateIds, regionalPartnerIds, cities, months }) {
+    const queryBuilder = this.connection
+      .getRepository(ActionMonthlyReport)
+      .createQueryBuilder('ActionMonthlyReport')
+      .select('monthlyReport.month', 'month')
+      .addSelect(
+        'COALESCE(SUM(ActionMonthlyReport.qntExpectedGraduates), 0)',
+        'totalExpectedGraduates',
+      )
+      .addSelect('COALESCE(SUM(ActionMonthlyReport.qntFormedGifts), 0)', 'totalFormedGifts')
+      .innerJoin('ActionMonthlyReport.monthlyReport', 'monthlyReport')
+      .innerJoin('monthlyReport.scholar', 'scholar')
+      .innerJoin('scholar.user', 'user')
+      .where(
+        `ActionMonthlyReport.status = '${StatusActionMonthlyEnum.CONCLUIDO}'`,
+      )
+      .andWhere('user.active = TRUE')
+      .andWhere('monthlyReport.year = :year', { year })
+
+      let regionalPartners = [];
+
+      if (partnerStateIds && partnerStateIds.length > 0) {
+        queryBuilder.andWhere('user.partnerStateId IN (:...partnerStateIds)', { partnerStateIds });
+
+        regionalPartners = await this.connection
+        .getRepository(RegionalPartner)
+        .createQueryBuilder('RegionalPartner')
+        .select('RegionalPartner.id', 'id')
+        .addSelect('RegionalPartner.name', 'name')
+        .where('RegionalPartner.partnerStateId IN (:...partnerStateIds)', { partnerStateIds })
+        .andWhere('RegionalPartner.active = 1')
+        .getRawMany();
+
+      }
+
+      let citiesByRegionalPartner = [];
+
+      if (regionalPartnerIds && regionalPartnerIds.length > 0) {
+        queryBuilder.andWhere('user.regionalPartnerId IN (:...regionalPartnerIds)', { regionalPartnerIds });
+
+        citiesByRegionalPartner = await this.connection
+        .getRepository(RegionalPartner)
+        .createQueryBuilder('RegionalPartner')
+        .select('RegionalPartner.id', 'RegionalPartnerId')
+        .addSelect('RegionalPartner.cities', 'cities')        
+        .where('RegionalPartner.id IN (:...regionalPartnerIds)', { regionalPartnerIds })
+        .andWhere('RegionalPartner.active = 1')
+        .getRawMany();
+      }
+      if (cities && cities.length > 0) {
+        queryBuilder.andWhere('user.city IN (:...cities)', { cities });
+      }
+      if (months && months.length > 0) {
+        queryBuilder.andWhere('monthlyReport.month IN (:...months)', { months });
+      }
+
+      queryBuilder.groupBy('month');
+  
+    const result = await queryBuilder.getRawMany();
+
+    const monthsInPortuguese = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+  
+     result.forEach(item => {
+      item.month_extense = monthsInPortuguese[item.month - 1];
+    });
+    
+    const allMonths = monthsInPortuguese.map((month, index) => {
+      const monthData = result.find(item => item.month === index + 1);
+      if (monthData) {
+        return monthData;
+      } else {
+        return {
+          month: index + 1,
+          totalExpectedGraduates: "0",
+          totalFormedGifts: "0",
+          month_extense: month
+        };
+      }
+    });
+
+    return {
+      regionalPartner: regionalPartners,
+      citiesByRegionalPartner: citiesByRegionalPartner,
+      data: allMonths
+    };
+  }
+
   async trainedTeachers(
     paramsSystemIndicator: ParamsSystemIndicatorDto,
     user: User,
@@ -1276,4 +1366,54 @@ export class SystemIndicatorsStateService {
       };
     }
   }
+
+  async trainedTeachersMonth(
+    paramsSystemIndicator: ParamsSystemIndicatorDto,
+    user: User,
+  ) {
+    const { year, regionalPartnerIds, cities, partnerStateIds, months } = paramsSystemIndicator;
+
+    this.validateUserIsScholar(user);
+
+    // const { partnerStateId, regionalPartnerIdForFilter, citiesForFilter } =
+    //   this.validateRoleProfile(user, regionalPartnerId, null, cities);
+
+    // const connectionOn = this.connection;
+
+    const dataRemittances = await this.getTotalTrainedTeachersMonths({
+        year,
+        partnerStateIds,//[11,32],
+        regionalPartnerIds,//regionalPartnerIdForFilter,
+        cities,
+        months
+      });
+      return dataRemittances;
+    }
+
+    async stateTrainedTeachersMonth(
+      paramsSystemIndicator: ParamsSystemIndicatorDto,
+      user: User,
+    ) {
+      const { year, regionalPartnerIds, regionalPartnerId, cities, months } = paramsSystemIndicator;
+  
+      this.validateUserIsScholar(user);
+  
+       const { partnerStateId, regionalPartnerIdForFilter, citiesForFilter } =
+         this.validateRoleProfile(user, regionalPartnerId, null, cities);
+  
+      // const connectionOn = this.connection;
+
+      console.log('partnerStateId = ', partnerStateId);
+      console.log('regionalPartnerIdForFilter = ', regionalPartnerIdForFilter);	
+  
+      const dataRemittances = await this.getTotalTrainedTeachersMonths({
+          year,
+          partnerStateIds: [partnerStateId],
+          regionalPartnerIds: regionalPartnerIdForFilter ? [regionalPartnerIdForFilter] : regionalPartnerIds,
+          cities : citiesForFilter ? citiesForFilter : cities,
+          months
+        });
+        return dataRemittances;
+      }
+
 }

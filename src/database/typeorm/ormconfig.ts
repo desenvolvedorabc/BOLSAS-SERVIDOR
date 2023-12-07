@@ -11,6 +11,6 @@ export default {
     migrationsDir: 'src/database/migrations',
   },
   // Configuration for typeorm-seeding
-  seeds: ['src/**/initial/*.seed{.ts,.js}'],
+  seeds: ['src/database/seeds/*.seed{.ts,.js}'],
   factories: ['src/**/*.factory{.ts,.js}'],
 };
