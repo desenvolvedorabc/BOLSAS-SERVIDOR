@@ -6,7 +6,7 @@ O produto PARC tem por principal fundamento de funcionamento um sistema de gest�
 
 ## 📱 Funcionalidade
 
-Responsavel pelo armazenamento e manipulação dos dados do projeto alem de disponibilizar a API para ser utilizada pelo site, permitindo buscar, criar e alterar os dados e se comunicar com o banco de dados, assim como realiza ações automáticas de processamento dos dados.
+Responsavel pelo armazenamento e manipulação dos dados do projeto alem de disponibilizar a API para ser utilizada pelo site, permitindo buscar, criar e alterar os dados e se comunicar com o banco de dados, assim como realiza ações automáticas de processamento dos dados..
 
 ## 🛠 Tecnologias
 
